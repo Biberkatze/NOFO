@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOFO</title>
+  <link rel="stylesheet" href="NOFO.css">
+  <style>
+    /* Add some basic CSS to style the log section */
+   .log {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+   .log-content {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header class="header">ShipTip
+    <a href="index.html"><img src="wappen.png" alt="Bild von dem NOFO Wappen" class="wappen"></a>
+  </header>
+  <div class="nav">
+    <input type="checkbox" id="toggle_button">
+    <label for="toggle_button" class="toggle_button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </label>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Tank.html">Tank</a></li>
+      <li><a href="Plane.html">Plane</a></li>
+      <li><a href="Helicopter.html">Helicopter</a></li>
+      <li><a href="Ship.html">Ships</a></li>
+    </ul>
+  </div>
+  <div class="main">
+    <!-- Add the log section -->
+    <div class="log">
+      <p id="log-content"></p>
+      <select id="mode">
+        <option value="air">Air</option>
+        <option value="ground">Ground</option>
+        <option value="spaa">SPAA</option>
+      </select>
+      <button id="save-button">Save</button>
+    </div>
+  </div>
+  <div class="footer">Nordic Force SRE page<br>contact:<br> cedric.tuma@bluewin.ch<br>Special Thanks to:<br>UrMumSaysHi, Nicolasnv, Nexx</div>
+</div>
 
+<script>
+  // Add JavaScript code to handle the save button click event
+  const logContent = document.getElementById('log-content');
+  const modeSelect = document.getElementById('mode');
+  const saveButton = document.getElementById('save-button');
+
+  saveButton.addEventListener('click', () => {
+    const logEntry = {
+      mode: modeSelect.value,
+      content: logContent.textContent
+    };
+
+    // Save logEntry to a local file using the Storage API
+    localStorage.setItem('logEntry', JSON.stringify(logEntry));
+  });
+</script>
+</body>
+</html>
